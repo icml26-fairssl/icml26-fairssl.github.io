@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="FairSSL: Fair Multimodal Self-Supervised Learning for heterogeneous, variable-length multimodal data.">
+  <meta name="keywords" content="FairSSL, multimodal self-supervised learning, fairness, VICReg, heterogeneous data">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FairSSL: Fair Multimodal Self-Supervised Learning</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script>
+    window.MathJax = {
+      tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']]},
+      svg: {fontCache: 'global'}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://github.com/abtinmU/FairSSL">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Resources
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="./static/pdfs/FairSSL_paper.pdf">
+            Paper
+          </a>
+          <a class="navbar-item" href="./static/poster/FairSSL_poster.pdf">
+            Poster
+          </a>
+          <a class="navbar-item" href="https://github.com/abtinmU/FairSSL">
+            Code
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Website Template
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">FairSSL: Fair Multimodal Self-Supervised Learning</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Jiaee Cheong<sup>*1,2,3</sup>,</span>
+            <span class="author-block">Abtin Mogharabin<sup>*4,5</sup>,</span>
+            <span class="author-block">Paul Pu Liang<sup>3</sup>,</span>
+            <span class="author-block">Hatice Gunes<sup>2</sup>,</span>
+            <span class="author-block">Sinan Kalkan<sup>6</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Harvard University,</span>
+            <span class="author-block"><sup>2</sup>University of Cambridge,</span>
+            <span class="author-block"><sup>3</sup>MIT,</span>
+            <span class="author-block"><sup>4</sup>University of Tübingen,</span>
+            <span class="author-block"><sup>5</sup>Zuse School ELIZA,</span>
+            <span class="author-block"><sup>6</sup>METU-ROMER</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal contribution · ICML 2026</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="./static/pdfs/FairSSL_paper.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="./static/poster/FairSSL_poster.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-chalkboard"></i>
+                  </span>
+                  <span>Poster</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/abtinmU/FairSSL"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <span class="link-block">
+                <a href="#BibTeX"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-obp"></i>
+                  </span>
+                  <span>BibTeX</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" src="./static/figures/teaser.svg" alt="FairSSL overview figure" height="100%">
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">FairSSL</span> uses subject-aware and modality-aware regularization for heterogeneous, variable-length, non-tabular multimodal data.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Prevalent multimodal self-supervised learning (SSL) methods rely on the redundancy assumption: that different views share substantial task-relevant information. This assumption fails in complex, real-world settings characterized by heterogeneity, such as variable-length healthcare or behavioral data, where enforcing strict alignment can discard unique, modality-specific signals and inadvertently amplify bias.
+          </p>
+          <p>
+            FairSSL leverages data heterogeneity as a resource for fairness rather than a hindrance. Unlike standard contrastive approaches, FairSSL uses a subject-aware Variance-Invariance-Covariance Regularization objective, where alignment is enforced across segments drawn from the same subject. A segment-based pooling strategy handles variable-length modalities, while the objective encourages within-subject variability, cross-modal and cross-subject invariance, and representation decorrelation.
+          </p>
+          <p>
+            Theoretical analysis shows that the objective bounds the score gap between protected groups. Empirically, FairSSL improves fairness on heterogeneous multimodal datasets without sacrificing downstream predictive performance.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method Summary</h2>
+        <img src="./static/figures/method_representations.svg"
+             alt="FairSSL method representation"
+             style="width: 100%; height: auto;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Motivation</h2>
+          <p>
+            Multimodal SSL is often designed around direct alignment between views. This works best when the views share substantial task-relevant information. In heterogeneous settings, modalities can have different lengths, temporal structures, and modality-specific signals.
+          </p>
+          <p>
+            Direct alignment can then suppress useful modality-specific information. FairSSL instead treats heterogeneity as structure that can support fairer multimodal representation learning.
+          </p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Variable-Length Inputs</h2>
+          <p>
+            Each subject can have a different number of segments in each modality. One-to-one segment alignment is therefore not always well-defined.
+          </p>
+          <p>
+            FairSSL encodes each segment, pools one modality into a subject-level representation, and aligns the pooled representation with available segments from the other modality.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">FairSSL Overview</h2>
+
+        <h3 class="title is-4">Segment encoding and pooling</h3>
+        <div class="content has-text-justified">
+          <p>
+            Each segment is encoded with a modality-specific encoder. FairSSL then average-pools one modality into a subject-level vector and aligns it against segment-level features from the other modality. This makes cross-modal alignment well-defined even when modalities have different numbers of segments.
+          </p>
+        </div>
+
+        <h3 class="title is-4">VICReg components</h3>
+        <div class="content has-text-justified">
+          <p>
+            Variance regularization prevents representation collapse. Covariance regularization reduces redundancy by decorrelating embedding dimensions. Invariance regularization encourages paired views to remain close in representation space.
+          </p>
+        </div>
+
+        <h3 class="title is-4">FairSSL invariance variants</h3>
+        <div class="content has-text-justified">
+          <p>
+            The four variants differ only in how the second-modality segments are selected for alignment. <b>M1</b> aligns each subject with itself. <b>M2</b> aligns a subject with all subjects in the batch. <b>M3</b> uses same-class inter-subject alignment. <b>M4</b> alternates between M2 and M3 across epochs.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-three-fifths">
+        <h2 class="title is-3">Why FairSSL Improves Fairness</h2>
+        <div class="content has-text-justified">
+          <p>
+            FairSSL links its regularization terms to fairness through group score behavior. The subject-aware invariance term reduces between-group score disparity, while the regularization terms jointly control within-group score spread.
+          </p>
+          <p>
+            In the statistical parity setting, the key takeaway is that fairness deviation is bounded by between-group score disparity together with within-group score spread.
+          </p>
+          <div class="has-text-centered" style="margin: 1.5rem 0; font-size: 1.15rem; overflow-x: auto;">
+            \[
+            \left|R_{\mathrm{SP}} - 1\right| \leq O\!\left(\Delta_g(w)\right) + O\!\left(v_0(w) + v_1(w)\right)
+            \]
+          </div>
+          <p>
+            The centroid-distance behavior is consistent with FairSSL reducing the separation between protected groups in the learned representation space.
+          </p>
+        </div>
+      </div>
+      <div class="column is-two-fifths">
+        <div class="content has-text-centered">
+          <img src="./static/figures/centroid_distance_v2.svg" alt="Centroid distance plot" style="width:100%; height:auto;">
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Main Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            FairSSL improves the fairness-performance trade-off over strong SSL baselines across heterogeneous multimodal settings. The D-Vlog Pareto plot shows FairSSL variants moving the frontier toward higher fairness and stronger predictive performance.
+          </p>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-three-fifths has-text-centered">
+            <img src="./static/figures/pareto_plot_v4.svg" alt="FairSSL Pareto plot" style="width:100%; height:auto;">
+          </div>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            Overall, FairSSL adapts SSL to heterogeneous, variable-length multimodal data, makes cross-modal alignment well-defined through pooling, and improves fairness without requiring strict segment matching.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{cheong2026fairssl,
+  title     = {FairSSL: Fair Multimodal Self-Supervised Learning},
+  author    = {Cheong, Jiaee and Mogharabin, Abtin and Liang, Paul Pu and Gunes, Hatice and Kalkan, Sinan},
+  booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
+  year      = {2026},
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="./static/pdfs/FairSSL_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/abtinmU/FairSSL" class="external-link">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>Website template adapted from <a href="https://nerfies.github.io">Nerfies</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
